@@ -1,0 +1,87 @@
+def addition(v1,v2):
+    return(v1+v2)
+
+def subtraction(v1,v2):
+        return(v1-v2)
+
+
+def multiplication(v1,v2):
+    return(v1*v2)
+
+def division(v1,v2):
+    try:
+        return(v1//v2)
+    except ZeroDivisionError as error:
+        print("ZeroDivisionError: value can't be zero. Zero division error",error) 
+    
+
+def menu():
+    number1=5
+    operation=0
+    x=0
+    while x<100:
+        try:
+            operation=int(input("enter the number of operation, 1.Addition 2. Substraction  3.Multipication 4.Division: 5. Borrar resultado:"))
+        except ValueError as error:
+            print("Error ValueError: you're entering a string. Please enter a valid number.", error)
+            print("initial number:", number1)
+        
+        if operation==5:
+            number1=0
+            print("count will restart. initial number:",number1)
+            try:
+                operation=int(input("enter the number of operation, 1.Addition 2. Substraction  3.Multipication 4.Division: 5. Borrar resultado:"))
+            except ValueError as error:
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+        
+        elif operation==1:
+            try:
+                number2=int(input("enter the number:"))
+                result=addition(number1,number2)
+                print(f"the summ of {number1} and",number2, "is:",result)
+                result=number1
+            except ValueError as error:
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+
+        elif operation==2:
+            try:
+                number2=int(input("enter the number:"))
+                result=subtraction(number1,number2)
+                print("the subtraction of", number1,"and",number2, "is:",result)
+                result=number1
+            except ValueError as error:
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+        
+        elif operation==3:
+            try: 
+                number2=int(input("enter the number:"))
+                result=multiplication(number1,number2)
+                print("the multiplication of", number1," and",number2, "is:",result)
+                result=number1
+            except ValueError as error:
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+
+        elif operation==4:
+            try:
+                number2=int(input("enter the number:"))
+                result=division(number1,number2)
+                print("the division of", number1, " and",number2, "is:",result)
+                result=number1
+            except ValueError as error:
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+
+        if operation!=1 or operation!=2 or operation!=3 or operation!=4 or operation!=5:
+            try:
+                operation=int(input("enter the number of operation, 1.Addition 2. Substraction  3.Multipication 4.Division: 5. Borrar resultado:"))
+                print("initial number:", number1)
+            except IndexError:
+                print("Error IndexError: you're enterting a number that doesn't exist. Please enter another option")
+            except ValueError as error:    
+                print("Error ValueError: you're entering a string. Please enter a number", error)
+    x=x+1
+
+
+#bloque principal
+menu()
+
+    
