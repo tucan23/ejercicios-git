@@ -1,0 +1,14 @@
+def ingrese():
+    count=0
+    texto=input("ingrese el texto: ")
+    chart=input("ingrese el caracter: ")
+    for  x in range(len(texto)):
+        if chart==texto[x]:
+            print(chart,texto,x)
+            count+=1
+    return count
+
+
+#bloque principal
+veces=ingrese()
+print("numero de veces que aparece la letra:", veces)

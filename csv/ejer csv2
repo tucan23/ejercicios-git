@@ -1,0 +1,35 @@
+import csv
+
+def entervideogames_list():
+    videogames=[]
+    game="y"
+    genre=""
+    developer=""
+    rating=""
+    while game!="n":
+        current_game={}
+        name=input("enter the name:")
+        current_game["name"]=name
+        genre=input("genre:")
+        current_game["genre"]=genre
+        developer=input("developer:")
+        current_game["developer"]=developer
+        rating=input("rating:")
+        current_game["rating"]=rating
+        game=input("do you want to enter more games(y/n):")
+        videogames.append(current_game)
+        print(current_game)
+    print(videogames)
+    return videogames
+
+def entervideogame_csv(path,videogames,headers):
+    with open(path,"w", newline="") as file:
+        writer=csv.DictWriter(file, headers, delimiter=",")
+        writer.writeheader()
+        writer.writerows(videogames)
+
+
+#bloque principal
+videogames=[]
+videogames=entervideogames_list()
+entervideogame_csv("games.csv",videogames,videogames[0].keys())

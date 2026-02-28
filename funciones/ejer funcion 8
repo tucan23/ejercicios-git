@@ -1,0 +1,30 @@
+def add_list():
+    list=[3,5,7,8,10,11,27,31]
+    return list
+
+def primos(number):
+    primo=0
+    x=2
+    while x<number:
+        print(x,number,number%x)
+        if number%x==0:
+            break
+        else:
+            primo=number
+            break
+        x=x+1
+    return primo
+
+
+#bloque principal
+list1=[]
+list2=[]
+list1=add_list()
+number=0
+primo=0
+for x in range(len(list1)):
+    number=list1[x]
+    primo=primos(number)
+    if primo!=0:
+        list2.append(primo)
+print(list2)

@@ -1,0 +1,22 @@
+def read_lines(path):
+    list1=[]
+    with open(path) as file:
+        for line in file:
+            list1.append(line.strip()) 
+    return list1
+        
+def arrange(list1):
+    list1.sort()
+    return list1
+
+def write_new(path,list1):
+    for x in range(len(list1)):
+        with open(path,"a") as file:
+            file.write(list1[x])
+                
+    
+#bloque principal
+list1=[]
+list1=read_lines("trolls soundtrack.txt")
+list1=arrange(list1)
+write_new("trolls soundtrack2.txt", list1)

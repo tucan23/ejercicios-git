@@ -1,0 +1,34 @@
+def read(path):
+    list1=[]
+    with open(path) as file:
+        for line in file.readlines():
+            list1.append(line)
+    return list1
+    
+
+def change(list1):
+    list2=[]
+    summ=""
+    for x in range(len(list1)):
+        
+        for caracter in list1[x]:
+            if caracter==" ":
+                break
+            else:
+                summ=summ+caracter
+        summ=summ+" "
+    list2.append(summ)
+    return list2
+
+
+def adding_txt(path,list2):
+    with open(path, "w") as file:
+        file.write(list2[0])
+
+            
+            
+#bloque principal
+list1=[]
+list1=read("text 5lines.txt")
+list2=change(list1)
+adding_txt("text all in one line.txt", list2)

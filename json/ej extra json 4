@@ -1,0 +1,64 @@
+import json
+
+def open_pokedex(path):
+    pokedex=[]
+    with open(path, "r") as file:
+        pokedex=json.load(file)
+        print(pokedex)
+    return pokedex
+
+
+def pokemon_type(pokedex):
+    list1=[]
+    list2=[]
+    list3=[]
+    summ=0
+    average=0
+    list1.append(pokedex[0]["type"])
+    list2.append(pokedex[0]["level"])
+    list3.append(pokedex[0]["name"]["english"])
+    for pokemon in pokedex:
+            if len(pokemon["type"])!=1:
+                for x in pokemon["type"]:
+                    if x not in list1:
+                        list1.append(x)
+                        list2.append(pokemon["level"])
+                        list3.append(pokemon["name"]["english"])
+                        #print(list1, list2, list3)
+            elif pokemon["type"] not in list1:
+                    list1.append(pokemon["type"])
+                    list2.append(pokemon["level"])
+                    list3.append(pokemon["name"]["english"])
+    #print(list1, list2, list3)
+    for pokemon in pokedex:
+        if pokemon["name"]["english"] not in list3:
+            #print(pokemon["name"]["english"])
+            for t in range(len(list1)):
+                if pokemon["type"]==list1[t]:
+                    print(list2[t], pokemon["level"])
+                    summ=list2[t]+pokemon["level"]
+                    #print(summ)
+                    average=summ//2
+                    list2[t]=average
+            return list1, list2, list3
+
+def print_pokelist(list1,list2,list3):
+    for pokemon in range(len(list1)):
+        print("type:", list1[pokemon], "level:", list2[pokemon])
+
+
+
+
+
+
+def main():
+    list1=[]
+    list2=[]
+    list3=[]
+    pokedex=[]
+pokedex=open_pokedex("pokedex.json")
+(list1,list2,list3)=pokemon_type(pokedex)
+print_pokelist(list1,list2,list3)
+
+
+main()

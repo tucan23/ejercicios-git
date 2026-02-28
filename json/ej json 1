@@ -1,0 +1,68 @@
+import json
+
+def read_pokedex(path):
+    pokelist=[]
+    with open(path, "r") as file:
+        pokelist=json.load(file)
+        return pokelist
+
+
+
+def ask_info(pokelist):
+    while True:
+        times=input("do you want to enter a new pokemon(y/n)")
+        name_pokemon={}
+        base={}
+        type_pokemon=[]
+        infopokemon={}
+        if times=="y":
+            name=input("enter the name of the pokemon:")
+            name_pokemon["english"]=name
+            infopokemon["name"]=name_pokemon
+            level=int(input("enter the level:"))
+            infopokemon["level"]=level
+            typepokemon=input("enter the pokemon type:")
+            type_pokemon.append(typepokemon)
+            while True:
+                typeofpokemon=input("Do you want to add another type?(y/n)")
+                if typeofpokemon=="y":
+                    typepokemon=input("enter the pokemon type:")
+                    type_pokemon.append(typepokemon)
+                else:
+                    break
+            infopokemon["type"]=type_pokemon
+            hp=input("enter de HP:")
+            base["HP"]=hp
+            attack=int(input("enter the attack:"))
+            base["Attack"]=attack
+            defense=int(input("enter the defense:"))
+            base["Defense"]=defense
+            spattack=int(input("enter the Sp. Attack:"))
+            base["Sp. Attack"]=spattack
+            spdefense=int(input("enter the Sp.Defense:"))
+            base["Sp. Defense"]=spdefense
+            speed=int(input("enter the speed:"))
+            base["Speed"]=speed
+            infopokemon["base"]=base
+            print ("the info is as bellow:",infopokemon)
+            pokelist.append(infopokemon)       
+        else:
+            break
+
+    return pokelist
+
+
+def write_json(path, pokelist):
+    with open(path, "w") as file:
+        json.dump(pokelist, file, indent=4)
+        
+
+
+def main():
+    pokelist=[]
+new_pokelist=[]
+pokelist=read_pokedex("pokedex.json")
+pokelist=ask_info(pokelist)
+write_json("pokedex.json",pokelist)
+
+main()

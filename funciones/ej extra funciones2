@@ -1,0 +1,16 @@
+def compare(list):
+    new_list=[] 
+    x=0
+    number=int(input("enter the number: "))
+    while x<(len(list)):
+        if number<=len(list[x]):
+            print(len(list[x]))
+            new_list.append(list[x])
+        x+=1
+    return (new_list)
+
+#bloque principal
+list=["donut", "eclaire", "cupcake", "cheescake"]
+new_list=[]
+new_list=compare(list)
+print("list of new words", new_list)

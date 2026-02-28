@@ -1,0 +1,41 @@
+def read_txt(path):
+    list1=[]
+    with open(path) as file:
+        for line in file.readlines():
+            list1.append(line)
+    #print (list1)
+    return list1
+
+def convert(list1):
+    list2=[]
+    caracter=""
+    summ=""
+    for f in range(len(list1)):
+        for x in range(len(list1[f])):
+            #print(list1[f][x])
+            if list1[f][x]=="\n":
+                continue
+            else:
+                caracter =list1[f][x].upper()
+                summ=summ+caracter
+        summ=summ+" "
+    list2.append(summ)
+    print(list2)
+    #print(list2)
+    return list2
+
+def write(path, list2):
+    with open(path, "w") as file:
+        for item in list2:
+            file.write(item)
+
+
+
+
+
+#bloque principal
+list1=[]
+list1=read_txt("text to read.txt")
+upper=[]
+upper=convert(list1)
+write("upper text.txt",upper)

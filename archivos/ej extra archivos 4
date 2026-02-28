@@ -1,0 +1,31 @@
+
+def name():
+    path=""
+    path=input("enter the file name:")
+    return path
+
+def asking_file(path):
+    text=""
+    try:
+        with open(path,"r") as file:
+            text=input("enter the text line:")
+            with open(path,"a") as file:
+                file.write("\n")
+                file.write(text)
+    except FileNotFoundError:
+        print("the file doesn't exist, will create a new one")
+        with open(path,"w") as file:
+            file.write("\n")
+            text=input("enter the text line:")
+            file.write(text)
+
+
+    print("your line has been added")
+
+
+
+
+#bloque principal
+path=""
+path=name()
+asking_file(path)

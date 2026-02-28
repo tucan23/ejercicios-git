@@ -1,0 +1,31 @@
+import csv
+
+countries_list =
+[
+{
+    'name':'Costa Rica',	
+    'capital':'San José',	
+    'currency':'Colón',		
+    'area_km2':'51,100',
+},
+{
+    'name':'Colombia',	
+    'capital':'Bogotá',	
+    'currency':'Peso Colombiano',		
+    'area_km2':'1,141,748',
+},
+{
+    'name':'México',	
+    'capital':'Ciudad de México',	
+    'currency':'Peso Mexicano',		
+    'area_km2':'1,972,550',
+}
+]
+
+def add_info(file,data,headers):
+    with open(path, "w", encoding='utf-8') as file:
+    writer= csv.DictWriter(file, headers)
+    writer.writeheader()
+    writer.writerows(data)
+
+add_info(countries.csv, countries_list, countries_list[0].keys())

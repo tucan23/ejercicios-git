@@ -1,0 +1,7 @@
+def turn_around(word):
+    for char in reversed(word):
+        print(char)
+        
+#bloque principal
+word=input("enter the word")
+turn_around(word)

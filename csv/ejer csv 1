@@ -1,0 +1,82 @@
+#Cree un programa que me permita ingresar información de n cantidad de videojuegos y los guarde en un archivo csv.#Debe incluir:
+#Nombre
+#Género
+#Desarrollador
+#Clasificación ESRB
+
+
+juegos = [
+{
+    "Nombre":"Minecraft",
+    "Género":"Sandbox / Supervivencia",
+    "Desarrollador":"Mojang Studios",
+    "Clasificación_ESRB":"E 10+ (Everyone 10+)"
+},
+{
+    "Nombre":"Fortnite",
+    "Género":"Battle Royale Shooter",
+    "Desarrollador":"Epic Games",
+    "Clasificación_ESRB":"T (Teen)"
+}, 
+{
+    "Nombre":"Counter-Strike 2",
+    "Género":"Shooter Táctico",
+    "Desarrollador":"Valve",
+    "Clasificación_ESRB":"M (Mature 17+)"
+},
+{
+    "Nombre":"League of Legends",
+    "Género":"MOBA",
+    "Desarrollador":"Riot Games",
+    "Clasificación_ESRB":"T (Teen)"
+},
+{
+    "Nombre":"Grand Theft Auto V",
+    "Género":"Acción / Mundo Abierto",
+    "Desarrollador":"Rockstar North",
+    "Clasificación_ESRB":"M (Mature 17+)"
+},
+{
+    "Nombre":"Call of Duty: Black Ops 6",
+    "Género":"Shooter en primera persona",
+    "Desarrollador":"Treyarch / Raven",
+    "Clasificación_ESRB":"M (Mature 17+)"
+}
+]
+
+
+import csv
+
+def entervideogames_list():
+    videogames=[]
+    game="y"
+    genre=""
+    developer=""
+    rating=""
+    while game!="n":
+        current_game={}
+        name=input("enter the name:")
+        current_game["name"]=name
+        genre=input("genre:")
+        current_game["genre"]=genre
+        developer=input("developer:")
+        current_game["developer"]=developer
+        rating=input("rating:")
+        current_game["rating"]=rating
+        game=input("do you want to enter more games(y/n):")
+        videogames.append(current_game)
+        #print(current_game)
+    print(videogames)
+    return videogames
+
+def entervideogame_csv(path,videogames,headers):
+    with open(path,"a") as file:
+        writer=csv.DictWriter(file,headers)
+        writer.writeheader()
+        writer.writerows(videogames)
+
+
+#bloque principal
+videogames=[]
+videogames=entervideogames_list()
+entervideogame_csv("games.csv",videogames,videogames[0].keys())
