@@ -1,0 +1,35 @@
+import json
+
+def call_pokemon(path):
+    pokedex=[]
+    with open(path, "r") as file:
+        pokedex=json.load(file)
+        return pokedex
+    
+
+def search(pokedex):
+    yes="y"
+    while yes=="y":
+        try:
+            pokemontype=input("enter the pokemon type:")
+            print("This pokemons are", pokemontype, "type:")
+            for pokemon in pokedex:
+                for f in pokemon["type"]:
+                    if f==pokemontype:
+                        print(pokemon["name"]["english"])
+        except TypeError:
+            print("please enter a valid pokemon type")
+        yes=input("do you want to enter a new type to search?(y/n):")
+    
+
+
+
+
+def main():
+    pokedex=[]
+    pokedex=call_pokemon("pokedex.json")
+    search(pokedex)
+
+
+
+main()

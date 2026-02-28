@@ -1,0 +1,7 @@
+def open_and_print(file):
+    with open(file) as text:
+        print(text.read())
+
+
+#bloque principal
+open_and_print("hello.txt")

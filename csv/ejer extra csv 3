@@ -1,0 +1,30 @@
+import csv
+
+def open_videogames(csvfile):
+    found=False
+    ask_rating=""
+    list1=[]
+    with open(csvfile, "r") as file:
+        reader=csv.reader(file, delimiter=' ')
+        encabezado=next(reader)
+        ask_rating=input("enter the rating to search:")
+        for line in reader:
+            if line[3].strip()==ask_rating.strip():
+                list1.append(line[0])
+                found=True
+                #print(found)
+        if found==False:
+            print("There's no game with this rating")
+    
+    print("this games has",ask_rating, "rating:")
+    for element in list1:
+        print(element)
+                    
+        
+
+
+            
+
+
+#bloque principal
+open_videogames("games.csv")

@@ -1,0 +1,25 @@
+def convert_to_integer(list1):
+    list2=[]
+    new_word=0
+    for x in range(len(list1)):
+        try:
+            new_word=int(list1[x])
+            list2.append(new_word) 
+        except ValueError:
+            print(list1[x],": ValueError: could not convert the element to integer")
+    return list2
+    
+def create_list():
+    x=0
+    words=""
+    while x<6:
+        words=input("enter the words:")
+        list1.append(words)
+        x+=1
+    print(list1)
+    return list1
+
+#bloque principal
+list1=[]
+list1=create_list()
+convert_to_integer(list1)

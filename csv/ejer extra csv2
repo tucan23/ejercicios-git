@@ -1,0 +1,17 @@
+import csv
+
+def open_videogames(csvfile):
+    with open(csvfile, "r") as file:
+        reader=csv.reader(file, delimiter=" ")
+        encabezado=next(file)
+
+
+
+
+
+
+
+
+
+#bloque principal
+open_videogames("games.csv")

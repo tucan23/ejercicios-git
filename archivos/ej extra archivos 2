@@ -1,0 +1,32 @@
+def read(path):
+    list1=[]
+    with open(path) as file:
+        for line in file.readlines():
+            list1.append(line)
+    #print(list1)
+    return list1
+
+def count_lines(list1):
+    summ=0
+    for f in range(len(list1)):
+        #print(list1[f])
+        for x in range(len(list1[f])):
+            if list1[f][x]!=" ":
+                summ+=1
+            else:
+                continue
+        summ -=1
+        #print(summ)
+    summ +=1
+    return summ
+
+
+
+
+
+
+#bloque principal
+list1=[]
+list1=read("line text.txt")
+summ=count_lines(list1)
+print("the ampount of words in this .txt:",summ)

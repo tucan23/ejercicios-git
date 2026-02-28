@@ -1,0 +1,7 @@
+def read_by_line(path):
+    with open(path) as file:
+        for line in file.readlines():
+            print("Line:",line)
+
+
+read_by_line("one piece.txt")

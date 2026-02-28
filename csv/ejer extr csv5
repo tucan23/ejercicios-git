@@ -1,0 +1,18 @@
+import csv
+
+def open_videogame(path):
+    dev_list={}
+    with open(path, "r") as file:
+        reader=csv.reader(file, delimiter=' ')
+        header=next(reader)
+        developer=input("enter the name of the developer:")
+        print("these games have been made by", developer, ":")
+        for row in reader:
+            #print(row[2])
+            if row[2]==developer:
+                print(row[0])
+            
+            
+
+#bloque principal
+open_videogame("games.csv")

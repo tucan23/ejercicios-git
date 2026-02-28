@@ -1,0 +1,39 @@
+import json
+
+def ask_help(path):
+    pokedex=[]
+    with open(path, "r") as file:
+        pokedex=json.load(file)
+        return pokedex
+    
+
+def print_pokemon(pokedex):
+    print(pokedex)
+    for pokemon in pokedex:
+        print("name:",pokemon["name"]["english"])
+        print("level:",pokemon["level"])
+        print("type:")
+        for f in pokemon["type"]:
+            print(" ",f)
+        print("HP:", pokemon["base"]["HP"])
+        print("Attack:", pokemon["base"]["Attack"])
+        print("Defense", pokemon["base"]["Defense"])
+        print("Sp.Attack:", pokemon["base"]["Sp. Attack"])
+        print("Sp.Defense:", pokemon["base"]["Sp. Defense"])
+        print("Speed:", pokemon["base"]["Speed"])
+        print("_" *20)
+        
+
+
+
+
+
+
+def main():
+    pokedex=[]
+    pokedex=ask_help("pokedex.json")
+    print_pokemon(pokedex)
+
+
+
+main()

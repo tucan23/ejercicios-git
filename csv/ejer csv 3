@@ -1,0 +1,16 @@
+import csv
+
+def open_videogames(csvfile):
+    with open(csvfile, "r") as file:
+        reader=csv.reader(file, delimiter=" ")
+        encabezado=next(file)
+        for name, genre, developer, rating in reader:
+            print("name:", name)
+            print("genre:", genre)
+            print("Developer:", developer)
+            print("Rating:", rating ,"\n")
+            
+
+
+#bloque principal
+open_videogames("games.csv")

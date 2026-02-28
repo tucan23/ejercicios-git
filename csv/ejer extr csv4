@@ -1,0 +1,30 @@
+import csv
+
+def open_videogame(path):
+    ratings_list={}
+    with open(path, "r") as file:
+        reader=csv.reader(file, delimiter=' ')
+        header=next(reader)
+        #print(header)
+        first=next(reader)
+        rating=first[3]
+        ratings_list[rating]=1
+        print(ratings_list)
+        summ=0
+        for row in reader:
+            if row[3] in ratings_list.keys():
+                summ+=1
+            else :
+                ratings_list[row[3]]=1
+            ratings_list[row[3]]=summ
+            #print(row[3], ratings_list.keys(), summ)
+            print(ratings_list)
+            
+            
+            #print(summ)
+        #print (ratings)
+            
+            
+
+#bloque principal
+open_videogame("games.csv")
