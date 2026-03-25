@@ -1,0 +1,19 @@
+class Empleado:
+
+    def __init__(self):
+        self.nombre=input("Ingrese el nombre:")
+        self.sueldo=float(input("Ingrese el sueldo:"))
+
+
+    def imprimir(self):
+        print("Nombre:", self.nombre, "Sueldo:", self.sueldo)
+
+    def impuestos(self):
+        if self.sueldo>3000:
+            print("Debe pagar impuestos :)")
+
+
+#bloque principal
+empleado1=Empleado()
+empleado1.imprimir()
+empleado1.impuestos()

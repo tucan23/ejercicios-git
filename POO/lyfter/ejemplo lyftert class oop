@@ -1,0 +1,24 @@
+class Car:
+
+    wheel_number=4
+
+    def show_car_history(self, miles, crashes):
+        print("This car has", miles, "and", crashes, "crashes")
+    
+
+my_car=Car()
+
+my_truck=Car()
+my_truck.wheel_number=6
+
+
+my_bigger_truck=Car()
+my_bigger_truck.wheel_number=8
+
+
+
+my_car.show_car_history(50000,2)
+my_truck.show_car_history(60000,1)
+my_bigger_truck.show_car_history(100000, 0)
+
+

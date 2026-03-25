@@ -1,0 +1,36 @@
+class Persona:
+
+    def inicializar(self, nombre, edad):
+        self.nombre=nombre
+        self.edad=edad
+
+
+    def imprimir(self):
+        print("Nombre:", self.nombre)
+        print("Edad:", self.edad)
+
+
+    def mayor(self):
+        if 18<=self.edad:
+            print("Mayor de edad")
+        else:
+            print("Menor de edad")
+
+
+#bloque principal
+persona1=Persona()
+persona1.inicializar("Maria",11)
+persona1.imprimir()
+persona1.mayor()
+
+
+persona2=Persona()
+persona2.inicializar("Ale",40)
+persona2.imprimir()
+persona2.mayor()
+
+persona3=Persona()
+persona3.inicializar("Didier", 49)
+persona3.imprimir()
+persona3.mayor()
+

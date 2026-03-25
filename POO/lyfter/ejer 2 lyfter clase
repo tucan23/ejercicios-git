@@ -1,0 +1,19 @@
+class Bus:
+    max_passengers=5
+    
+    def __init__(self):
+        self.bus1=[]
+        self.count1=0
+        while self.count1<self.max_passengers: 
+            self.person=input("enter the name of the passenger:")
+            self.bus1.append(self.person)
+            self.count1+=1
+        print(self.bus1)
+            
+    def unboarding(self):
+        for person in self.bus1:
+            print("now unboarding passsnger:", person)
+
+firstbus=Bus() 
+firstbus.unboarding()
+    
