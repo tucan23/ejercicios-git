@@ -1,0 +1,12 @@
+class Circle:
+
+    def inicializar(self,radius):
+        self.radius=radius
+
+    def get_radius(self):
+        print("the area of the circle is:", 2*3.14*self.radius)
+
+
+circle1=Circle()
+circle1.inicializar(5)
+circle1.get_radius()

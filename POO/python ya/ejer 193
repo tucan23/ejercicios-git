@@ -1,0 +1,26 @@
+class Operacion:
+    
+    def __init__(self):
+        self.valor1=int(input("ingrese el primer valor:"))
+        self.valor2=int(input("ingrese el segundo valor:"))
+
+    def suma(self):
+        print("la suma es:",self.valor1+self.valor2)
+
+    def resta(self):
+        print("la resta es:", self.valor1-self.valor2)
+    
+    def division(self):
+        print("la division de los dos numeros:",self.valor1//self.valor2)
+    
+    def multiplicacion(self):
+        print("la division es:", self.valor1*self.valor2)
+
+#bloque principal
+operacion1=Operacion()
+#operacion1.suma()
+operacion1.resta()
+operacion1.division()
+operacion1.multiplicacion()
+
+

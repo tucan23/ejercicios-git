@@ -7,13 +7,13 @@ def store_actual_csv(path, list1):
         writer=csv.DictWriter(file, header)
         writer.writerows(list1)
 
-def store_actual_csv2(path, list1):
+def store_new_file(path, list1):
     with open(path, "w") as file:
         writer=csv.DictWriter(file, header)
         writer.writeheader()
         writer.writerows(list1)
 
-def store_new_csv(path, list1):
+def store_actual_csv2(path, list1):
     with open(path, "a") as file:
         writer=csv.DictWriter(file, header)
         writer.writeheader()
@@ -29,6 +29,6 @@ def read_csv(path):
 
 def enter_path():
     filepath=""
-    filepath=input("which file do you want to open(without.csv)?:")
+    filepath=input("enter a name for the file(without.csv)?:")
     new_file=filepath+".csv"
     return new_file   

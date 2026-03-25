@@ -1,0 +1,41 @@
+class Triangulo:
+
+    def inicializar(self, l1,l2,l3):
+        self.l1=l1
+        self.l2=l2
+        self.l3=l3
+
+    def mayor(self):
+        print("Triangulo - medida de los lados:",self.l1,self.l2,self.l3)
+        if self.l2<=self.l1 and self.l3<=self.l1:
+            print("Lado Mayor:", self.l1)
+        elif self.l3<=self.l2:
+            print("Lado Mayor:", self.l2)
+        elif self.l2<=self.l3:
+            print("Lado Mayor:", self.l3)
+
+
+    def equilatero(self):
+        if self.l1==self.l2 and self.l1==self.l3:
+            print("Es equilatero")
+        else:
+            print("No es equilatero")
+        
+#bloque principal
+triangulo1=Triangulo()
+triangulo1.inicializar(2,3,5)
+triangulo1.mayor()
+triangulo1.equilatero()
+
+
+triangulo2=Triangulo()
+triangulo2.inicializar(3,3,3)
+triangulo2.mayor()
+triangulo2.equilatero()
+
+
+triangulo3=Triangulo()
+triangulo3.inicializar(5,3,10)
+triangulo3.mayor()
+triangulo3.equilatero()
+

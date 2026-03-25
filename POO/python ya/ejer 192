@@ -1,0 +1,17 @@
+class Cuadrado:
+    def __init__(self):
+        self.lado=int(input("ingrese la medida del lado:"))
+
+    def perimetro(self):
+        print("el perimetro del cuadrado es:",self.lado*4)
+
+    def area(self):
+        print("la superficie del cuadrado es:", self.lado*self.lado)
+
+
+#bloque principal
+cuadrado1=Cuadrado()
+cuadrado1.perimetro()
+cuadrado1.area()
+
+
