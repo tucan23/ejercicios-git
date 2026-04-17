@@ -1,85 +1,96 @@
 from data import store_actual_csv, read_csv, store_new_file, store_actual_csv2,enter_path
-student_list=[]
-import csv
 
+import csv
+student_list=[]
+
+class Student:
+    
+    def __init__(self,name,section,spanish,english,socialstudies,science):
+        self.name=name
+        self.section=section
+        self.spanish=spanish
+        self.english=english
+        self.socialstudies=socialstudies
+        self.science=science
+        
+        
 def enter_info():
-    student_list.clear()
-    while True:
-        student={}
-        count=1
-        letter=""
         while True:
-            name=input("enter full name of the student:")
+            count=1
             letter=""
-            for chart in name:
-                if chart==" ":
-                    continue
-                letter=letter+chart
-            if letter.isalpha():
+            while True:
+                name=input("enter full name of the student:")
                 letter=""
                 for chart in name:
-                    letter=letter+chart.capitalize()
-                student["Name"]=letter
-                break
-            else:
-                print("please enter a valid name")
+                    if chart==" ":
+                        continue
+                    letter=letter+chart
+                if letter.isalpha():
+                    letter=""
+                    for chart in name:
+                            letter=letter+chart.capitalize()
+                    name=letter
+                    break
+                else:
+                    print("please enter a valid name")
         
-        while True:
-            count1=0
-            section1=""
-            section=input("enter the section of the student(Example:2B):") 
-            count1=len(section)
-            if count1==3:
+            while True:
+                count1=0
+                section1=""
+                section=input("enter the section of the student(Example:2B):") 
+                count1=len(section)
+                if count1==3:
                     if not section[0].isalpha() and not section[1].isalpha() and section[2].isalpha():
                         section1=section[0]+section[1]+section[2].capitalize()
-                        student["Section"]=section1
+                        section=section1
                         break
-            elif count1==2:
+                elif count1==2:
                     if section[0].isdigit() and section[1].isalpha():
                         section1=section[0]+section[1].capitalize()
-                        student["Section"]=section1
+                        section=section1
                         break
-            else:
+                else:
                     print("please enter a valid section(2A, 11B, etc)")
         #enter spanish score
-        spanish=input("enter the spanish score:")
-        if is_number(spanish):
-            student["Spanish"]=spanish
+            spanish=int(input("enter the spanish score:"))
+            while not is_number(spanish):
+                spanish=int(input("enter the spanish score:"))
         #enter english score
-        english=input("enter the english score:")
-        if is_number(english):
-            student["English"]=english
+            english=input("enter the english score:")
+            while not is_number(english):
+                english=input("enter the english score:")
         #enter social studies score
-        socialstudies=input("enter the s. studies score:")
-        if is_number(socialstudies):
-            student["Social Studies"]=socialstudies
+            socialstudies=input("enter the s. studies score:")
+            while not is_number(socialstudies):
+                socialstudies=input("enter the s. studies score:")
         #enter science score
-        science=input("enter the science score:")
-        if is_number(science):
-            student["Science"]=science
-        student_list.append(student)
-        yes=input("Do you want to add another student(y/n)?:")
-        if yes=="n" or yes=="N":
-            break
-        if yes=="y" or yes=="Y":
-            continue
-        else:
-            raise ValueError("please enter y or n")
-    return student_list
+            science=input("enter the science score:")
+            while not is_number(science):
+                science=input("enter the science score:")
+            student_list.append(Student(name,section,spanish,english,socialstudies,science))
+            yes=input("Do you want to add another student(y/n)?:")
+            if yes=="n" or yes=="N":
+                break
+            if yes=="y" or yes=="Y":
+                continue
+            else:
+                raise ValueError("please enter y or n")
+        return student_list
 
-    
-def print_info():
+
+
+def print_info(student_list):
     print("Student information:")
     #print(student_list)
-    for x in student_list:
-        print("Name:",x["Name"], "Section:",x["Section"])
-        print("Spanish Score:",x["Spanish"])
-        print("English Score:",x["English"])
-        print("Social Studies Score:",x["Social Studies"])
-        print("Science Score:",x["Science"])
+    for student in student_list:
+        print("Name:",student.name, "Section:",student.section)
+        print("Spanish Score:",student.spanish)
+        print("English Score:",student.english)
+        print("Social Studies Score:",student.socialstudies)
+        print("Science Score:",student.science)
     input("\nPress return to go back to menu...")
 
-def store():
+def store(student_list):
     exist=True
     print("do you wish to:")
     print("1.save on an existing file(chiquis.csv)?")
@@ -101,8 +112,7 @@ def student_exist(student_list, path):
     list_in_file=read_csv(path)
     for student in list_in_file:
         for name in student_list:
-            print(name["Name"],student["Name"])
-            if name["Name"]==student["Name"] and name["Section"]==student["Section"]:
+            if name(student.name)==student["Name"] and name(student.section)==student["Section"]:
                 exist=True
                 print("Student already on the list")
                 break
@@ -116,18 +126,10 @@ def print_csv():
     new_file=enter_path()
     student=read_csv(new_file)
     if not student:
-            print("file is empty")
-    else:
-        #print(student)
-        print("*"*100)
-        for x in student:
-            print("Name:",x["Name"], "Section:",x["Section"])
-            print("Spanish Score:",x["Spanish"])
-            print("English Score:",x["English"])
-            print("Social Studies Score:",x["Social Studies"])
-            print("Science Score:",x["Science"])
-            input("\nPress return to see other student information...")
+        print("file is empty")
+    print("file has been imported")
     input("\nPress return to go back to menu...")
+    return student
 
 def average():
     student=[]
@@ -140,7 +142,7 @@ def average():
         average["Name"]=x["Name"]
         x["Average"]=float(summ/4)
         #print(x)
-    store_actual_csv2("chiquis.csv",student)
+    store_new_file("chiquis.csv",student)
 
 def top_3():
     average=[]
@@ -155,11 +157,13 @@ def top_3():
 def overall_average():
     average=[]
     summ=0
+    count=1
     ov_average=0
     average=read_csv("chiquis.csv")
     for x in average:
         summ+=float(x["Average"])
-        ov_average=summ/len(average)
+        count+=1
+    ov_average=round(float(summ)/(count),2)
     print("the overall average is:", ov_average)
     input("\nPress return to go back to menu...")
 
@@ -225,7 +229,6 @@ def failed_students():
             count+=1
     if count==0:
         print("There are no failed students")
-    input("\nPress return to go back to menu...")
 
                 
 def is_number(number):

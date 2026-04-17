@@ -1,0 +1,27 @@
+class Rectangle:
+
+    def __init__(self):
+        while True:    
+            try:
+                self.width=float(input("Enter the width of the rectangle:"))
+                self.height=float(input("enter the height of the rectangle:"))
+                if self.width<=0 or self.height<=0:
+                    raise ValueError("negative number not permitted, please enter a positive number:")
+                    break            
+            
+            except ValueError:
+                print("negative number not permitted, please enter a positive number:")
+            
+        self.get_area()
+        self.get_perimeter()
+            
+
+    def get_area(self):
+            area=self.width*self.height
+            print("The area of the rectangle is:", area, "cm2")
+
+    def get_perimeter(self):
+            perimeter=2*self.width+2*self.height
+            print("The perimeter is:", perimeter, "cm")
+
+Rectangle1=Rectangle()

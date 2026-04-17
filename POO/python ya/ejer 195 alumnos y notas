@@ -1,0 +1,53 @@
+class Alumnos:
+    nombres=[]
+    notas=[]
+
+
+    def __init__(self):
+        self.opcion=0
+        while self.opcion!=4:
+            print("1. Cargar alumno")
+            print("2. Listar alumno")
+            print("3.mostrar alumnos con notas mayores o iguales a 7")
+            print("4.finalizar programa")
+            self.opcion=int(input("ingrese la opcion:"))
+            if self.opcion==1:
+                self.carga()
+            if self.opcion==2:
+                self.lista()
+            if self.opcion==3:
+                self.mayor()
+            if self.opcion==4:
+                break
+
+        
+        
+    def carga(self):
+        cont=0
+        while cont<=5:
+            nombre=input("ingrese el nombre del alumno:")
+            nota=int(input("ingrese la nota:"))
+            self.nombres.append(nombre)
+            self.notas.append(nota)
+            cont+=1
+        print("______"*20)
+        input("presione return para volver al menu")
+        
+
+    def lista(self):
+        cont=0
+        print("Lista de alumnos:")
+        for x in range(5):
+            print("Nombre:",self.nombres[x], "Nota", self.notas[x])
+        input("presione return para volver al menu")
+
+    def mayor(self):
+        print("alumnos con notas mayor a 7:")
+        for x in range(5):
+            if self.notas[x]>=7:
+                print(self.nombres[x])
+        input("presione return para volver al menu")
+            
+
+alumno=Alumnos()
+

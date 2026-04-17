@@ -1,10 +1,10 @@
-from actions import enter_info, print_info, store, print_csv, average, top_3, overall_average, validate_student, delete_student, failed_students
+from actions import Student,enter_info,print_info, store, print_csv, average, top_3, overall_average, validate_student, delete_student, failed_students
 
 def menu():
     number=0
     yes=""
+    students=[]
     while True:
-        students=[]
         student=[]
         new_file=""
         print("*"*100)
@@ -16,29 +16,27 @@ def menu():
         print("4.Overall Average" )
         print("5.Export to a CSV file")
         print("6.Import CVS file")  
-        print("7.Delete information") 
-        print("8.Failed Students")     
+        print("7.Delete information")   
+        print("8.Failed students")   
         try:
             number=int(input("Select a number from the menu(0 to stop):"))
         except ValueError:
             print("invalid character")
         print("*"*100)
         print("-"*100)
-        if number==0:
-            break
         if number==1:
             students=enter_info()
         if number==2:
-            print_info()
+            print_info(students)
         if number==3:
             average()
             top_3()
         if number==4:
             overall_average()
         if number==5:
-            store()
+            store(students)
         if number==6:
-            print_csv()
+            students=print_csv()
         if number==7:
             validate_student()
         if number==8:

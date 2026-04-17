@@ -1,0 +1,39 @@
+class Client:
+    suspended_clients=[]
+
+    def enter(self,name,code):
+        self.name=name
+        self.code=code
+
+    def printing(self):
+        print("name:",self.name, "code:", self.code)
+        self.suspended()
+    
+    def suspended(self):
+        if self.code in Client.suspended_clients:
+            print("This client is suspended")
+            input("press enter to continue")
+        else:
+            print("This client is ok")
+            input("press enter to continue")
+    
+    def suspend(self):
+        Client.suspended_clients.append(self.code)
+
+client1=Client()
+client2=Client()
+client3=Client()
+client4=Client()
+
+client1.enter("Ana",1)
+client2.enter("Saul",2)
+client3.enter("Saliberto",3)
+client4.enter("Coco Channel",4)
+
+client3.suspend()
+client4.suspend()
+
+client1.printing()
+client2.printing()
+client3.printing()
+client4.printing()

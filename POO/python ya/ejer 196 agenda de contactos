@@ -1,0 +1,85 @@
+class Agenda:
+
+    def __init__(self):
+        self.informacion=[]
+
+    def menu(self):
+        print("____"*10,"Agenda personal", "____"*10)
+        print("___"*50)
+        while True:
+            print("selecciones una opcion:")
+            print("1.Ingresar contacto")
+            print("2.Listar contactos")
+            print("3.Consultar contacto")
+            opcion=int(input("4.Modificar informacion:"))
+
+            if opcion==1:
+                self.cargar()
+            if opcion==2:
+                self.lista()
+            if opcion==3:
+                self.consulta()
+            if opcion==4:
+                self.modificar()
+        
+    def cargar(self):
+            self.contacto={}
+            cont="s"
+            while True:
+                self.nombre=input("ingrese el nombre del contacto:")
+                self.telefono=int(input("ingrese el numero de telefono(xxxxxxxx):"))
+                self.correo=input("ingrese el correo electronico:")
+                self.contacto["Nombre"]=self.nombre
+                self.contacto["Telefono"]=self.telefono
+                self.contacto["Correo"]=self.correo
+                print(self.contacto)
+                self.informacion.append(self.contacto)
+                print("___"*50)
+                print(self.informacion)
+                print("___"*50)
+                break
+            
+    def lista(self):
+            print("___"*10,"lista de contactos","____"*10)
+            for x in self.informacion:
+                print("Nombre:",x["Nombre"])
+                print("Telefono:",x["Telefono"])
+                print("Correo:",x["Correo"])
+                print("___"*50)
+                input("presione return para continuar")
+            
+    def consulta(self):
+            cons=input("ingrese el contacto que quiere consultar:")
+            for x in self.informacion:
+                print(x["Nombre"])
+                if cons==x["Nombre"]:
+                    print("contacto encontrado:")
+                    print("___"*50)
+                    print("Nombre:",x["Nombre"], "Telefono:", x["Telefono"], "Correo:", x["Correo"])
+                    print("___"*50)
+            input("presione return para continuar")
+
+    def modificar(self):
+            cons=input("ingrese el contacto que quiere modificar:")
+            for x in self.informacion:
+                if cons==x["Nombre"]:
+                    print("contacto encontrado. desea modificar:")
+                    print("a.telefono")
+                    aob=input("b.correo:")
+                    if aob=="a":
+                        print("el numero actual es:", self.contacto["Telefono"])
+                        telefono=int(input("ingrese el numero nuevo(xxxxxxxx):"))
+                        self.contacto["Telefono"]=telefono
+                        print("el telefono se modifico")
+                    if aob=="b":
+                        print("El correo actual es:", self.contacto["Correo"])
+                        correo=input("ingrese el correo nuevo:")
+                        self.contacto["Correo"]=correo
+                        print("el correo se modifico")
+
+agenda1=Agenda()
+agenda1.menu()
+                        
+
+
+

@@ -1,0 +1,52 @@
+class Product:
+
+    def __init__(self,name,price,amount):
+        self.name=name
+        self.price=price
+        self.amount=amount
+
+
+class Inventory:
+
+    def __init__(self):
+        self.total_articles=[]
+        self.products1={}
+        self.products2={}
+        self.products3={}
+        self.total=0
+
+
+    def add(self):
+        self.product1=Product("rice",2,20)
+        self.products1["Product"]=self.product1.name
+        self.products1["Price"]=self.product1.price
+        self.products1["Amount"]=self.product1.amount
+        self.total_articles.append(self.products1)
+        self.product2=Product("canned beans",2,30)
+        self.products2["Product"]=self.product2.name
+        self.products2["Price"]=self.product2.price
+        self.products2["Amount"]=self.product2.amount
+        self.total_articles.append(self.products2)
+        self.product3=Product("milk box",1,25)
+        self.products3["Product"]=self.product3.name
+        self.products3["Price"]=self.product3.price
+        self.products3["Amount"]=self.product3.amount
+        self.total_articles.append(self.products3)
+
+
+    def show(self):
+        for x in self.total_articles:
+            print("Product:", x["Product"])
+            print("Price:$",x["Price"])
+            print("Amount:",x["Amount"])
+    
+    def inventory(self):
+        print("total inventory value:")
+        for x in self.total_articles:
+            self.total=self.total+x["Price"]
+        print("$",self.total)
+
+inventory1=Inventory()
+inventory1.add()
+inventory1.show()
+inventory1.inventory()
