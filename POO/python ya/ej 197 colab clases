@@ -1,0 +1,44 @@
+class Cliente:
+
+    def __init__(self,nombre):
+        self.nombre=nombre
+        self.monto=0
+
+    def depositar(self,monto):
+        self.monto=self.monto+monto
+        
+    
+    def retirar(self,monto):
+        self.monto=self.monto-monto
+
+
+    def monto_final(self):
+        return self.monto
+    
+    def imprimir(self):
+        print("el monto en la cuenta es de:", self.nombre,":", self.monto)
+
+
+class Banco:
+
+    def __init__(self):
+        self.cliente1=Cliente("Maria")
+        self.cliente2=Cliente("Saul")
+        self.cliente3=Cliente("Ana")
+
+    def operar(self):
+        self.cliente1.depositar(100)
+        self.cliente2.depositar(200)
+        self.cliente3.retirar(100)
+        self.cliente3.depositar(200)
+
+    def depositos_totales(self):
+        total=self.cliente1.monto_final()+self.cliente2.monto_final()+self.cliente3.monto_final()
+        print("el monto total en el banco es de:", total)
+        self.cliente1.imprimir()
+        self.cliente2.imprimir()
+        self.cliente3.imprimir()
+
+banco=Banco()
+banco.operar()
+banco.depositos_totales()

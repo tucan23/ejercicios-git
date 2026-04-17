@@ -1,0 +1,45 @@
+import random
+
+class Dice:
+
+    def throw(self):
+        self.number=random.randint(1,6)
+        
+    def printing(self):
+        print("number in the dice:",self.number)
+
+    def returnv(self):
+            return self.number
+
+    
+class DiceGame:
+
+    def __init__(self):
+        self.dice1=Dice()
+        self.dice2=Dice()
+        self.dice3=Dice()
+
+    def play(self):
+        self.dice1.throw()
+        self.dice2.throw()
+        self.dice3.throw()
+
+        self.dice1.printing()
+        self.dice2.printing()
+        self.dice3.printing()
+
+        if self.dice1.returnv()==self.dice2.returnv() and self.dice2.returnv()==self.dice3.returnv():
+            print("You Won, three dice with the same number")
+        else:
+            print("You loose, dice with different numbers")
+            
+while True:
+    game1=DiceGame()
+    game1.play()
+    cero=input("press enter to continue or 0 to stop:")
+    if cero=="0":
+        break
+
+
+    
+

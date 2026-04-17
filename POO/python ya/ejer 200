@@ -1,0 +1,29 @@
+class Person:
+    
+    def __init__(self):
+        self.name=input("enter the name:")
+        self.age=int(input("enter the age of the person:"))
+
+    def printing(self):
+        print("name:",self.name)
+        print("age:",self.age)
+
+
+
+class Employee(Person):
+
+    def __init__(self):
+        super().__init__()
+        self.salary=int(input("enter the salary:"))
+
+    def pay_taxes(self):
+        if self.salary>3000:
+            super().printing()
+            print("salary:",self.salary)
+            print("must pay taxes :)")
+
+person1=Person()
+person1.printing()
+print("--"*20)
+employee1=Employee()
+employee1.pay_taxes()

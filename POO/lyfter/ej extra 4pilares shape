@@ -1,0 +1,50 @@
+from abc import ABC, abstractmethod
+class Shape:
+
+    def __init__(self):
+        pass
+    @abstractmethod
+    def calculate_perimeter():
+        pass
+            
+    def calculate_area():
+        pass
+
+class Circle(Shape):
+
+    def __init__(self):
+        super().__init__()
+        self.radius=int(input("enter the radius:"))
+        
+    def calculate_perimeter(self):
+        perimeter_circle=2*3.1416*self.radius
+        print("perimeter:",perimeter_circle,"m")
+    
+    def calculate_area(self):
+            circle_area=3.1416*self.radius*self.radius
+            print("Area:",circle_area,"m2")
+
+
+class Square(Shape):
+
+    def __init__(self):
+        super().__init__()
+        self.side1=int(input("enter the 1st side:"))
+        self.side2=int(input("enter the 2nd side:"))
+    
+    def calculate_perimeter(self):
+        perimeter_square=2*self.side1+2*self.side2
+        print("perimeter:",perimeter_square,"m")
+    
+    def calculate_area(self):
+        if self.side2 and self.side1:
+            square_area=self.side1*self.side2
+            print("Area:",square_area,"m2")
+
+square1=Square()
+square1.calculate_perimeter()
+square1.calculate_area()
+
+circle1=Circle()
+circle1.calculate_perimeter()
+circle1.calculate_area()

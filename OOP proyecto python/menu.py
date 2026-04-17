@@ -1,4 +1,4 @@
-from actions import Student,print_info, store, print_csv, average, top_3, overall_average, validate_student, delete_student, failed_students
+from actions import Student,enter_info,print_info, store, print_csv, average, top_3, overall_average, validate_student, delete_student, failed_students
 
 def menu():
     number=0
@@ -25,9 +25,7 @@ def menu():
         print("*"*100)
         print("-"*100)
         if number==1:
-            student1=Student()
-            students=student1.enter_info()
-            print(students)
+            students=enter_info()
         if number==2:
             print_info(students)
         if number==3:

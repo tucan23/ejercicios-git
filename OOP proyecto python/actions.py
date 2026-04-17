@@ -5,11 +5,16 @@ student_list=[]
 
 class Student:
     
-    def __init__(self):
-        self.info={}
-        self.student_list=[]
+    def __init__(self,name,section,spanish,english,socialstudies,science):
+        self.name=name
+        self.section=section
+        self.spanish=spanish
+        self.english=english
+        self.socialstudies=socialstudies
+        self.science=science
         
-    def enter_info(self):
+        
+def enter_info():
         while True:
             count=1
             letter=""
@@ -25,7 +30,6 @@ class Student:
                     for chart in name:
                             letter=letter+chart.capitalize()
                     name=letter
-                    self.info["Name"]=name
                     break
                 else:
                     print("please enter a valid name")
@@ -39,33 +43,31 @@ class Student:
                     if not section[0].isalpha() and not section[1].isalpha() and section[2].isalpha():
                         section1=section[0]+section[1]+section[2].capitalize()
                         section=section1
-                        self.info["Section"]=section
                         break
                 elif count1==2:
                     if section[0].isdigit() and section[1].isalpha():
                         section1=section[0]+section[1].capitalize()
                         section=section1
-                        self.info["Section"]=section
                         break
                 else:
                     print("please enter a valid section(2A, 11B, etc)")
         #enter spanish score
-            spanish=input("enter the spanish score:")
-            if is_number(spanish):
-                self.info["Spanish"]=spanish
+            spanish=int(input("enter the spanish score:"))
+            while not is_number(spanish):
+                spanish=int(input("enter the spanish score:"))
         #enter english score
             english=input("enter the english score:")
-            if is_number(english):
-                self.info["English"]=english
+            while not is_number(english):
+                english=input("enter the english score:")
         #enter social studies score
             socialstudies=input("enter the s. studies score:")
-            if is_number(socialstudies):
-                self.info["Social Studies"]=socialstudies
+            while not is_number(socialstudies):
+                socialstudies=input("enter the s. studies score:")
         #enter science score
             science=input("enter the science score:")
-            if is_number(science):
-                self.info["Science"]=science
-            self.student_list.append(self.info)
+            while not is_number(science):
+                science=input("enter the science score:")
+            student_list.append(Student(name,section,spanish,english,socialstudies,science))
             yes=input("Do you want to add another student(y/n)?:")
             if yes=="n" or yes=="N":
                 break
@@ -73,19 +75,19 @@ class Student:
                 continue
             else:
                 raise ValueError("please enter y or n")
-        return self.student_list
+        return student_list
 
 
 
 def print_info(student_list):
     print("Student information:")
     #print(student_list)
-    for x in student_list:
-        print("Name:",x["Name"], "Section:",x["Section"])
-        print("Spanish Score:",x["Spanish"])
-        print("English Score:",x["English"])
-        print("Social Studies Score:",x["Social Studies"])
-        print("Science Score:",x["Science"])
+    for student in student_list:
+        print("Name:",student.name, "Section:",student.section)
+        print("Spanish Score:",student.spanish)
+        print("English Score:",student.english)
+        print("Social Studies Score:",student.socialstudies)
+        print("Science Score:",student.science)
     input("\nPress return to go back to menu...")
 
 def store(student_list):
@@ -110,7 +112,7 @@ def student_exist(student_list, path):
     list_in_file=read_csv(path)
     for student in list_in_file:
         for name in student_list:
-            if name["Name"]==student["Name"] and name["Section"]==student["Section"]:
+            if name(student.name)==student["Name"] and name(student.section)==student["Section"]:
                 exist=True
                 print("Student already on the list")
                 break

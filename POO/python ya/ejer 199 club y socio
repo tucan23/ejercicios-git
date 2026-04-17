@@ -1,0 +1,27 @@
+class Associate:
+
+    def __init__(self):
+        self.name=input("enter the name:")
+        self.years=int(input("enter the years of antiquity:"))
+
+
+
+class Club:
+
+    def __init__(self):
+        self.associate1=Associate()
+        self.associate2=Associate()
+        self.associate3=Associate()
+
+    def years(self):
+        print("The associeate with more years in the club is:")
+        if self.associate1.years>self.associate2.years and self.associate1.years>self.associate3.years:
+            print(self.associate1.name,"with", self.associate1.years, "years")
+        elif self.associate2.years>self.associate1.years and self.associate2.years>self.associate3.years:
+            print(self.associate2.name,"with", self.associate2.years, "years")
+        elif self.associate3.years>self.associate1.years and self.associate3.years>self.associate2.years:
+            print(self.associate3.name, "with", self.associate3.years, "years")
+        
+club=Club()
+club.years()
+
