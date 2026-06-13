@@ -1,0 +1,22 @@
+class Player:
+
+    def __init__(self,name,score):
+        self.name=name
+        self.score=int(score)
+
+    def __str__(self):
+        player_info="name:"+self.name
+        if self.score<1000:
+            player_info=player_info+": begginer player"
+        if self.score>1000:
+            player_info=player_info+": expert player"
+
+        return player_info
+    
+
+#main
+player1=Player("Archi","2000")
+player2=Player("Dani","800")
+
+print(player1)
+print(player2)

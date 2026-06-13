@@ -1,0 +1,36 @@
+class Vehicle:
+    
+    def __init__(self,brand,year):
+        self._brand=brand
+        self._year=year 
+
+    def get_info(self):
+        return f"{self._brand} ({self._year})"
+    
+class Car(Vehicle):
+    
+    def __init__(self,brand,year,doors,car_type):
+        super().__init__(brand,year)
+        self.doors=doors
+        self.car_type=car_type
+    
+    def get_info(self):
+        info=super().get_info()
+        return f"{info} - {self.doors} doors car type:{self.car_type}"
+
+class Motorcycle(Vehicle):
+
+        def __init__(self,brand,year,tires):
+            super().__init__(brand,year)
+            self.tires=tires
+        
+        def get_info(self):
+            info=super().get_info()
+            return f"{info} ({self._year}) - tires: {self.tires}"
+
+#main
+car1=Car("Susuki","2020","4", "SUV")
+print(car1.get_info())
+moto1=Motorcycle("Yamaha",2020,2)
+print(moto1.get_info())
+

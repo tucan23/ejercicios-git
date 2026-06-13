@@ -1,0 +1,19 @@
+import wx
+
+class Window(wx.Frame):
+        
+    def __init__(self, *args, **kws):
+        super(Window,self).__init__(*args, **kws)
+        self.button1=wx.Button(self,label="Press")
+        self.Bind(wx.EVT_BUTTON,self.press_button, self.button1)
+
+    def press_button(self,event):
+        wx.MessageBox("Hello World!")
+
+app =wx.App()
+frm=Window(None,title="Prueba")
+frm.Show()
+app.MainLoop()x
+    
+                
+            

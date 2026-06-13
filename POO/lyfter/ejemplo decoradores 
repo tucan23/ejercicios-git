@@ -1,0 +1,28 @@
+class User:
+    role=""
+
+    def __init__(self,role):
+        self.role=role
+
+    def admin_only(func):
+        def wrapper(user,*args):
+            if user.role!="Admin":
+                raise ValueError("You dont have permisson to run this action")
+            func(user,args)
+        return wrapper
+    
+    @admin_only
+    def create_product(user,product_name):
+        print("product", product_name, "entered")
+
+    @admin_only
+    def create_category(user,category):
+        print("category", category, "created")
+    @admin_only
+    def modify_order(user,order_id):
+        print("your order",order_id, "has been modified")
+
+user=User("Admin")
+user.create_product("beans")
+user.create_category("4")
+user.modify_order("1020")

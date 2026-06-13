@@ -1,0 +1,27 @@
+class Numbers:
+
+    def __init__(self,number):
+        self.number=number
+    
+    def is_number(func):
+        def wrapper(self):
+            #print(self.number)
+            try:
+                num=float(self.number)
+                print(num)
+                return func(self)
+            except ValueError:
+                print("You entered a letter.Please enter a valid number")
+        return wrapper
+    
+    @is_number
+    def numbers(self):
+        list1=[]
+        list1.append(self.number)
+        print(self.number,list1)
+
+number1=Numbers(10)
+number1.numbers()
+number2=Numbers("b")
+number2.numbers()
+

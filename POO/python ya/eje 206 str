@@ -1,0 +1,21 @@
+class Family:
+
+    def __init__(self,father,mother,children=[]):
+        self.father=father
+        self.mother=mother
+        self.children=children
+
+    def __str__(self):
+        family=self.father+","+self.mother
+        for kid in self.children:
+            family=family+","+kid
+        family=family
+
+        return family
+        
+
+#main
+family1=Family("Luis","Ana",["Roberto","Carlos","Rosalia"])
+family2=Family("Andrey","Adriana",["Mario","Lorena","Marissa"])
+print(family1)
+print(family2)

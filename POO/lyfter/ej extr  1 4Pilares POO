@@ -1,0 +1,26 @@
+class Employee:
+
+    def __init__(self,name,salary):
+        self._name=name
+        self._salary=salary
+
+    @property 
+    def get_name(self):
+        return self._name,self.salary
+
+    
+    @get_name.setter
+    def validate_salary(self):
+        if self._salary<0:
+            ValueError("Enter a positive amount")
+    def salary(self,percent):
+        self._salary=self._salary+percent*self._salary
+        print("your salary is now:", self._salary)
+
+
+employee1=Employee("Amanda",200)
+if employee1.validate_salary:
+    employee1.salary(0.1)
+employee2=Employee("Luis",100)
+if employee2.validate_salary:
+    employee2.salary(0.05)

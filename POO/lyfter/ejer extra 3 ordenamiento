@@ -1,0 +1,43 @@
+class Sorting:
+    list1=[3,4,"b",1,10,9,5,2]
+
+    def __init__(self):
+        self.validate()
+        
+    def validate(self):
+        self.yes=False
+        for x in self.list1:
+            try:
+                self.float_list[x]=float(self.list1[x])
+                print(self.float_list[x])
+                if self.float_list[x].isdigit() and self.float_list != []:
+                    self.yes=True
+            except:
+                    ValueError("Error when entering the value, please enter a number ")
+        print(self.yes)
+        if self.yes:
+            self.sorter()
+    
+    def sorter(self):
+        self.minor=0
+        print("initial list:",self.list1)
+        try:    
+            for x in range(7,0,-1):
+                for y in range(7,0,-1):
+                #print(self.list1[y],self.list1[y-1]
+                    if self.list1[y]<self.list1[y-1]:
+                        self.minor=self.float_list[y]
+                        self.list1[y]=self.list1[y-1]
+                        self.list1[y-1]=self.minor
+                    #print(self.list1[y],self.list1[y-1],self.minor)
+                    #print(self.list1)
+        except:
+            ValueError("error entering an invalid character. Please enter a valid number")
+        print("final sorted list:",self.list1)
+
+#main
+sorting1=Sorting()
+sorting1.validate()
+
+
+
