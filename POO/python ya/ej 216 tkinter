@@ -1,0 +1,30 @@
+import tkinter as tk
+
+class Application:
+
+    def __init__(self):
+        self.value=1
+        self.window1=tk.Tk()
+        self.window1.title("Button and label controls")
+        self.label1=tk.Label(self.window1,text=self.value)
+        self.label1.grid(column=0, row=0)
+        self.label1.configure(foreground="red")
+
+        self.button1=tk.Button(self.window1,text="Aumentar", command=self.aumentar)
+        self.button1.grid(column=0,row=1)
+
+        self.button2=tk.Button(self.window1, text="Disminuir",command=self.disminuir)
+        self.button2.grid(column=0, row=2)
+
+        self.window1.mainloop()
+
+    def aumentar(self):
+        self.value=self.value+1
+        self.label1.config(text=self.value)
+
+    def disminuir(self):
+        self.value=self.value-1
+        self.label1.config(text=self.value)
+
+
+application1=Application()

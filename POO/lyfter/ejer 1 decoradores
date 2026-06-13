@@ -1,0 +1,27 @@
+class Person:
+
+    def __init__(self,person,name):
+        self.person=person
+        self.name=name
+
+    def print_name(func):
+        def wrapper(self,*args):
+            func(self,*args)
+            print("She is a woman and her name is:", self.name)
+        return wrapper
+    
+    @print_name
+    def is_woman(self):
+        if self.person!="woman":
+                raise ValueError ("the person is not a woman")
+        
+        
+    
+    
+    
+
+person1=Person("woman", "Ali")
+person1.is_woman()
+person=Person("woman","Sandy")
+person.is_woman()
+

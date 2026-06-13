@@ -1,0 +1,27 @@
+class User:
+
+
+    def __init__(self,user):
+        self.user=user
+        self.user_log_in=True
+        if self.user!="admin":
+                self.user_log_in=False
+        self.show_profile()
+
+    
+    def requires_login(func):
+        def wrapper(self):
+            print("User type:",self.user)
+            if not self.user_log_in:
+                print ("User not authenticated")
+            else:
+                func(self)
+        return wrapper
+
+    @requires_login
+    def show_profile(self):
+        print("User authenticated successful,showing user profile")
+
+user1=User("admin")
+
+user2=User("guest")

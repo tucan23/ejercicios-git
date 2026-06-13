@@ -1,0 +1,42 @@
+class Node:
+
+    def __init__(self,data,next):
+        self.data=data
+        self.next=next
+
+class Stack:
+
+    def __init__(self):
+        self.top=None
+        
+
+    def push(self,data):
+        new_node=Node(data,self.top)
+        self.top=new_node
+
+
+    def pop(self):
+        if self.top is not None:
+            deleted_node=self.top
+            self.top=self.top.next
+        print("deleted node:",deleted_node.data)
+    
+    def print_stack(self):
+        current_node=self.top
+        while current_node is not None:
+            print(current_node.data)
+            current_node=current_node.next
+        print("*"*20)
+
+
+my_stack=Stack()
+my_stack.push("top disc")
+my_stack.push("middle disc")
+my_stack.push("bottom disc")
+
+my_stack.print_stack()
+
+my_stack.pop()
+
+my_stack.print_stack()
+

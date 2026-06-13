@@ -1,0 +1,38 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+
+class BinaryTree:
+    def __init__(self):
+        self.root=None
+
+
+    def print_tree(self):
+        if self.root is None:
+            print("Tree is empty")
+
+        else:
+            self.print_in_order(self.root)
+            print()
+    
+    def print_in_order(self,current_node):
+        if current_node is not None:
+            self.print_in_order(current_node.left)
+            print(current_node.data)
+            self.print_in_order(current_node.right)
+
+
+tree=BinaryTree()
+tree.root=Node("Root")
+
+tree.root.left=Node("Left Branch")
+tree.root.right=Node("Right Branch")
+
+tree.root.left.left=Node("Left Lower Branch")
+tree.root.right.right=Node("Left 2nd Lower Branch")
+
+tree.print_tree()
+
+

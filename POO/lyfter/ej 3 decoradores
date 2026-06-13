@@ -1,0 +1,28 @@
+
+class User:
+
+    def __init__(self,date_of_birth):
+        self.date_of_birth=int(date_of_birth)
+
+    @property
+    def age(self):
+        self.actual_time=2026
+        self.user_age=self.actual_time-self.date_of_birth
+        return self.user_age
+    
+    def validate_age(func):
+        def wrapper(self):
+            if self.age<18:
+                raise ValueError("user is a minor")
+            func(self)
+        return wrapper
+            
+    @validate_age
+    def process_info(self):
+            print("permitted access to user")
+
+user1=User(1985)
+user1.process_info()
+user2=User(2015)
+user2.process_info()
+

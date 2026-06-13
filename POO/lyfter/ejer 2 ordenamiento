@@ -1,0 +1,23 @@
+class Sorting:
+    list1=[3,4,7,1,10,9,5,2]
+
+    def __init__(self):
+        self.sorter()
+
+
+    def sorter(self):
+        self.minor=0
+        for x in range(7,0,-1):
+            for y in range(7,0,-1):
+                print(self.list1[y],self.list1[y-1])
+                if self.list1[y]<self.list1[y-1]:
+                    self.minor=self.list1[y]
+                    self.list1[y]=self.list1[y-1]
+                    self.list1[y-1]=self.minor
+                    print(self.list1[y],self.list1[y-1],self.minor)
+                    print(self.list1)
+        print(self.list1)
+
+#main
+sorting1=Sorting()
+

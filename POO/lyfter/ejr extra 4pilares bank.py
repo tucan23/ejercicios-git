@@ -5,14 +5,12 @@ class BankAccount:
     
     def deposit(self,amount):
         self.balance=self.balance+amount
+        return self.balance
 
     def withdrawal(self,amount):
         #print(self.balance)
-        if amount<self.balance:
             self.balance=self.balance-amount
-        elif self.balance<amount:
-            self.balance=amount-self.balance
-
+            return self.balance
 
 class SavingsAccount(BankAccount):
 
@@ -31,20 +29,25 @@ class SavingsAccount(BankAccount):
             if self.action==1:
                 self.amount=int(input("Enter the amount you want deposit: "))
                 self.deposit(self.amount)
-                print("The deposit has been made, your now balance is:", self.balance)
+                print("The deposit has been made")
+                print("balance:", self.balance)
                 print("----"*20)
                 input("Press enter to return to menu")
 
             if self.action==2:
-                self.min_balance=20
+                self.min_balance=100
+                second_balance=0
                 #print(self.balance)
                 while True:
                     self.amount=int(input("Enter the amount you want withdraw:"))
-                    if self.balance<self.min_balance:
-                        print("The balance can't be fewer than ", self.min_balance, "please withdraw another amount")
-                    elif self.balance>self.min_balance:
+                    second_balance=self.balance-self.amount
+                    if second_balance<self.min_balance:
+                        #print(second_balance)
+                        print("The balance can't be fewer than", self.min_balance, "please withdraw another amount")
+                    elif second_balance>=self.min_balance:
                         self.withdrawal(self.amount)
-                        print("You have withdrawed",self.amount,"from your account. Your balance now is:",self.balance)
+                        print("You have withdrawed",self.amount,"from your account")
+                        print("balance:",self.balance)
                         print("----"*20)
                         input("Press enter to return to menu")
                         break
@@ -55,5 +58,6 @@ class SavingsAccount(BankAccount):
                 break
 
 saving1=SavingsAccount()
+
 saving1.operate()
     

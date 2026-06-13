@@ -1,0 +1,9 @@
+import tkinter as tk
+class Aplication:
+
+    def __init__(self):
+        window1=tk.Tk()
+        window1.title("Hola Mundo")
+        window1.mainloop()
+
+aplication1=Aplication()

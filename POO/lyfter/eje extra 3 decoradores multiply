@@ -1,0 +1,40 @@
+from datetime import datetime
+class Operations:
+
+
+
+    def __init__(self, value1,value2):
+        self.value1=value1
+        self.value2=value2
+
+    def log_call(func):
+        def wrapper(self):
+            print("multiply args:",self.value1,"*", self.value2)
+            print(datetime.now())
+            func(self)
+        return wrapper
+
+
+    def validate_number(func):
+        def wrapper(self):
+            try:
+                print(self.value1,self.value2)
+                is_number1=float(self.value1)
+                is_number2=float(self.value2)
+                func(self)
+            except:
+                print("invalid character,please enter a valid number")
+            
+        return wrapper
+
+    @validate_number
+    @log_call
+    def multiply(self):
+        self.result=self.value1*self.value2
+        print("Answer:",self.result)
+        return self.result
+    
+operation1=Operations(3,7)
+operation1.multiply()
+operation2=Operations("c",5)
+operation2.multiply()
